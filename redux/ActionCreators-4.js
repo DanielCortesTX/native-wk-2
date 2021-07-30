@@ -26,9 +26,28 @@ export const commentsFailed = errMess => ({
     payload: errMess
 });
 
-export const addComments = comments => ({
+export const addComments = (comments) => ({
     type: ActionTypes.ADD_COMMENTS,
     payload: comments
+});
+
+export const postComment = (campsiteId, rating, author, text) => dispatch => {
+    const newComment = {
+        campsiteId,
+        rating,
+        author,
+        text
+    };
+    newComment.date = new Date().toISOString();
+
+    setTimeout(() => {
+        dispatch(addComment(newComment));
+    }, 2000);
+};
+
+export const addComment = comment => ({
+    type: ActionTypes.ADD_COMMENT,
+    payload: comment
 });
 
 export const fetchCampsites = () => dispatch => {
@@ -48,7 +67,8 @@ export const fetchCampsites = () => dispatch => {
             error => {
                 const errMess = new Error(error.message);
                 throw errMess;
-            })
+            }
+        )
         .then(response => response.json())
         .then(campsites => dispatch(addCampsites(campsites)))
         .catch(error => dispatch(campsitesFailed(error.message)));
@@ -85,7 +105,8 @@ export const fetchPromotions = () => dispatch => {
             error => {
                 const errMess = new Error(error.message);
                 throw errMess;
-            })
+            }
+        )
         .then(response => response.json())
         .then(promotions => dispatch(addPromotions(promotions)))
         .catch(error => dispatch(promotionsFailed(error.message)));
@@ -122,7 +143,8 @@ export const fetchPartners = () => dispatch => {
             error => {
                 const errMess = new Error(error.message);
                 throw errMess;
-            })
+            }
+        )
         .then(response => response.json())
         .then(partners => dispatch(addPartners(partners)))
         .catch(error => dispatch(partnersFailed(error.message)));
@@ -152,22 +174,3 @@ export const addFavorite = campsiteId => ({
     type: ActionTypes.ADD_FAVORITE,
     payload: campsiteId
 });
-
-export const postComment = ( campsiteId, rating, author, text ) => dispatch => {
-    const newComment = {
-        campsiteId,
-        rating,
-        author,
-        text
-    }
-
-    newComment.date = new Date()
-    setTimeout(() => {
-        dispatch(addComment(newComment));
-    }, 2000);
-}
-
-export const addComment = comment => ({
-    type: ActionTypes.ADD_COMMENT,
-    payload: comment
-})
