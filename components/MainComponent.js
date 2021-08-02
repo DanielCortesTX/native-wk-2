@@ -303,3 +303,26 @@ const styles = StyleSheet.create({
 export default connect(null, mapDispatchToProps)(Main);
 
 
+
+
+// const anObject = {
+//     prop1: 'one',
+//     prop2: 'two',
+//     prop3: 3
+// }
+
+// props = {
+//     campsite: {
+//         name: 'React Lake',
+//         prop2: 'two',
+//         prop3: 3
+//     },
+//     navigation
+    
+// }
+// <RenderComponent anObject={anObject}/>
+
+// function renderCampsite(props){
+//     const prop1 = props.anObject.prop1
+//     // const { prop1, prop2 } = anObject
+// }
