@@ -22,3 +22,18 @@ export const ConfigureStore = () => {
 
     return store;
 }
+
+// theStore = {
+//     campsites: {
+//         campsites: [
+            
+//         ],
+//         loading: false,
+//         err_mess: null
+//     },
+//     comments: {
+//         comments: [],
+//         loading: false,
+//         err_mess: null
+//     }
+// }
